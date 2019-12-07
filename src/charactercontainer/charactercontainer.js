@@ -19,7 +19,7 @@ class CharacterComponent extends React.Component {
             show: false,
           };
       
-          this.showModal = this.showModal.bind(this);
+        this.showModal = this.showModal.bind(this);
     }
     
     showModal(event) {
@@ -42,15 +42,13 @@ class CharacterComponent extends React.Component {
 
 const CharacterimageComponent = ({character}) => {
     return(
-        //<div className="characterimage">
-            <img className="characterimage" src={`${character.thumbnail.path}/standard_fantastic.jpg`} alt={character.name}/>
-        //</div>
+        <img className="characterimage" src={`${character.thumbnail.path}/standard_fantastic.jpg`} alt={character.name}/>       
     )
 };
 
 const CharacternameComponent = ({character}) => {
     return(
-    <p className="charactername">{character.name}</p>
+        <p className="charactername">{character.name}</p>
     )
 };
 

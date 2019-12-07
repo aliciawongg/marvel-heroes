@@ -3,7 +3,7 @@ import './App.css';
 import NavbarComponent from './navbar';
 import SearchComponent from './search/search';
 import CharactercontainerComponent from './charactercontainer/charactercontainer';
-//import CharacterdetailsComponent from './characterdetails/characterdetails';
+
 
 const url = 'https://gateway.marvel.com/v1/public/characters?nameStartsWith=';
 const apikey = '&ts=1565922410&apikey=6a038473ffd6407750a2ea27115f7e7c&hash=1492df65a88ef98a1a279719fe509f72&limit=100';
@@ -37,7 +37,7 @@ class App extends React.Component {
     fetch(`${url}${this.state.userInput}${apikey}`)
       .then(response => response.json())
       .then((data) => {
-        console.log(data);
+        console.log(data.data.results.length);
         this.setState({
           searchCharacters: data.data.results
         });
@@ -49,7 +49,6 @@ class App extends React.Component {
       <div className="App">
         <NavbarComponent />
         <SearchComponent 
-          userInput={this.state.userInput}
           fetchResults={this.fetchResults}
           getSearchWord={this.getSearchWord} />
         <CharactercontainerComponent searchCharacters={this.state.searchCharacters} />
