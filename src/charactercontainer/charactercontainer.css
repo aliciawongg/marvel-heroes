@@ -6,6 +6,7 @@
 
 .singlecharacter {
     padding: 30px;
+    cursor: pointer;
 }
 
 .characterimage {
