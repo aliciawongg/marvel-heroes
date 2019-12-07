@@ -1,0 +1,20 @@
+.charactercontainer {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.singlecharacter {
+    padding: 30px;
+}
+
+.characterimage {
+    border: 1px solid grey;
+    
+}
+
+.charactername {
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}

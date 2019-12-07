@@ -1,4 +1,5 @@
 import React from 'react';
+import './charactercontainer.css';
 
 const CharactercontainerComponent = ({ searchCharacters }) => {
     return (
@@ -12,7 +13,7 @@ const CharactercontainerComponent = ({ searchCharacters }) => {
 
 const CharacterComponent = ({character}) => {
     return(
-        <div>
+        <div className='singlecharacter'>
             <CharacterimageComponent character = {character} />
             <CharacternameComponent character = {character} />
         </div>
@@ -22,14 +23,14 @@ const CharacterComponent = ({character}) => {
 const CharacterimageComponent = ({character}) => {
     return(
         //<div className="characterimage">
-            <img className="characterimage" src={`${character.thumbnail.path}.jpg`} alt={character.name}/>
+            <img className="characterimage" src={`${character.thumbnail.path}/standard_fantastic.jpg`} alt={character.name}/>
         //</div>
     )
 };
 
 const CharacternameComponent = ({character}) => {
     return(
-    <span className="charactername">{character.name}</span>
+    <p className="charactername">{character.name}</p>
     )
 };
 

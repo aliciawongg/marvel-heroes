@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import CharactercontainerComponent from './charactercontainer';
-import SearchComponent from './search';
+import CharactercontainerComponent from './charactercontainer/charactercontainer';
+import SearchComponent from './search/search';
 
 const url = 'https://gateway.marvel.com/v1/public/characters?nameStartsWith=';
 const apikey = '&ts=1565922410&apikey=6a038473ffd6407750a2ea27115f7e7c&hash=1492df65a88ef98a1a279719fe509f72&limit=100';
