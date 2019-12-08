@@ -16,6 +16,8 @@ class App extends React.Component {
     this.state = {
       userInput: '',
       searchCharacters: [],
+      noData: false,
+      saveCharacters: [],
     };
 
     this.getSearchWord = this.getSearchWord.bind(this);
@@ -38,11 +40,27 @@ class App extends React.Component {
       .then(response => response.json())
       .then((data) => {
         console.log(data.data.results.length);
-        this.setState({
-          searchCharacters: data.data.results
-        });
+        if (data.data.results.length === 0) {
+          this.setState({
+            noData: true})
+        } else {        
+          this.setState({
+            noData: false,
+            searchCharacters: data.data.results
+          });
+        }
       })
+      .catch((error) => {
+        console.log(error);
+    });
   }
+
+  
+
+  // removeFromList() {
+
+
+  // }
 
   render() {
     return (
@@ -51,7 +69,10 @@ class App extends React.Component {
         <SearchComponent 
           fetchResults={this.fetchResults}
           getSearchWord={this.getSearchWord} />
-        <CharactercontainerComponent searchCharacters={this.state.searchCharacters} />
+        <CharactercontainerComponent 
+          searchCharacters={this.state.searchCharacters} 
+          noData={this.state.noData} 
+          saveCharacters={this.state.saveCharacters} />
        
       </div>
     );

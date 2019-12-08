@@ -11,7 +11,8 @@ class CharacterdetailsComponent extends React.Component {
         if(!this.props.show) {
             return null;
         }
-    
+        //const {selectedChar} = this.props.character;
+       
         return(
             <Modal show={this.props.show} onHide={e => {this.closeModal()}}>
                 <Modal.Header closeButton>
