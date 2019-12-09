@@ -35,7 +35,7 @@ const CharurlsComponent = ({ character }) => {
         <div>Urls:
             <ul>
                 {character.urls.map((url, index) => 
-                    <li key={url.index}><a href={url.url} target="_blank">{url.type}</a></li>)}
+                    <li key={index}><a href={url.url} target="_blank">{url.type}</a></li>)}
             </ul>
         </div>
     );
