@@ -1,12 +1,14 @@
 .charactercontainer {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
+    flex-wrap: wrap;
     
 }
 
 .singlecharacter {
     padding: 30px;
     cursor: pointer;
+    flex-basis: 33%;
 }
 
 .wrapper {
@@ -16,7 +18,7 @@
  .wrapper .fa {
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: 85px;
     background-color: white;
     padding: 3px;
  }

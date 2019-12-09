@@ -22,6 +22,7 @@ class App extends React.Component {
 
     this.getSearchWord = this.getSearchWord.bind(this);
     this.fetchResults = this.fetchResults.bind(this);
+    this.addToList = this.addToList.bind(this);
   };
   
   getSearchWord (event) {
@@ -55,7 +56,16 @@ class App extends React.Component {
     });
   }
 
-  
+  addToList(event) {
+    console.log('add character: ', event.name);
+    this.setState({
+        saveCharacters: this.state.saveCharacters.concat(event.name)
+    }, function(){
+      console.log(this.state.saveCharacters)
+    } );
+    alert(`Added ${event.name} to My List.`)
+    
+}
 
   // removeFromList() {
 
@@ -72,8 +82,7 @@ class App extends React.Component {
         <CharactercontainerComponent 
           searchCharacters={this.state.searchCharacters} 
           noData={this.state.noData} 
-          saveCharacters={this.state.saveCharacters} />
-       
+          addToList={this.addToList} />
       </div>
     );
   };
