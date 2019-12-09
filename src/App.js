@@ -5,7 +5,6 @@ import ListComponent from './list/list';
 import NavbarComponent from './navbar';
 import SearchComponent from './search/search';
 import CharactercontainerComponent from './charactercontainer/charactercontainer';
-import { throwStatement } from '@babel/types';
 
 const url = 'https://gateway.marvel.com/v1/public/characters?nameStartsWith=';
 const apikey = '&ts=1565922410&apikey=6a038473ffd6407750a2ea27115f7e7c&hash=1492df65a88ef98a1a279719fe509f72&limit=100';
@@ -22,8 +21,6 @@ class App extends React.Component {
       saveCharacters: [],
       currentPage: 1,
       charPerPage: 3,
-      // showPrev: false,
-      // showNext: false
     };
 
     this.getSearchWord = this.getSearchWord.bind(this);
@@ -32,29 +29,29 @@ class App extends React.Component {
     this.removeFromList = this.removeFromList.bind(this);
     this.handleNextPage = this.handleNextPage.bind(this);
     this.handlePrevPage = this.handlePrevPage.bind(this);
-    //this.setButtonActive = this.setButtonActive.bind(this);
-   
   };
   
+  //retrieve user input 
   getSearchWord (event) {
     let keyword = event.target.value
     keyword = keyword.charAt(0).toUpperCase() + keyword.slice(1);
     
     this.setState ({
-      userInput: keyword
+      userInput: keyword,
     })
   }
 
+  //fetch api based on user input
   fetchResults() {
     fetch(`${url}${this.state.userInput}${apikey}`)
       .then(response => response.json())
       .then((data) => {
-        console.log(data.data.results.length);
         if (data.data.results.length === 0) {
           this.setState({
             noData: true})
         } else {        
           this.setState({
+            currentPage: 1,
             noData: false,
             searchCharacters: data.data.results
           });
@@ -65,6 +62,7 @@ class App extends React.Component {
     });
   }
 
+  //add selected character to my list
   addToList(event) {
     this.setState({
         saveCharacters: this.state.saveCharacters.concat(event.name)
@@ -72,6 +70,7 @@ class App extends React.Component {
     alert(`Added ${event.name} to My List.`)
   }
 
+  //remove selected character from my list
   removeFromList(event) {
     this.setState({
       saveCharacters: this.state.saveCharacters.filter(function(person) {
@@ -81,32 +80,19 @@ class App extends React.Component {
     alert(`Removed ${event} from My List`);
   }
 
+  //go to next page when user clicks Next button
   handleNextPage(event) {
     this.setState({
       currentPage: this.state.currentPage+1
     })
-    //this.setButtonActive();
   }
 
+  //go to previous page when user clicks Previous button
   handlePrevPage(event) {
     this.setState({
       currentPage: this.state.currentPage-1
     })
-    //this.setButtonActive();
   }
-
-  // setButtonActive() {
-  //   const numOfPages = this.state.searchCharacters/this.state.charPerPage;
-  //   if(this.state.currentPage === 1 && numOfPages > 1){
-  //       this.setState({
-  //           showPrev: false
-  //       }, function(){console.log(this.state.showPrev)})
-  //   } else if (this.state.currentPage === (this.state.searchCharacters/this.state.charPerPage)) {
-  //       this.setState({
-  //           showNext: false
-  //       })
-  //   }
-  // }
 
   render() {
     return (

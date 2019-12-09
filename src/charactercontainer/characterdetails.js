@@ -2,8 +2,8 @@ import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 
 class CharacterdetailsComponent extends React.Component {
+    //close modal which displays character details
     closeModal(event) {
-        console.log('close modal');
         this.props.closeModal && this.props.closeModal();
     };
 
@@ -11,7 +11,6 @@ class CharacterdetailsComponent extends React.Component {
         if(!this.props.show) {
             return null;
         }
-        //const {selectedChar} = this.props.character;
        
         return(
             <Modal show={this.props.show} onHide={e => {this.closeModal()}}>

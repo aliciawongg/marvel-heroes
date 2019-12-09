@@ -5,7 +5,8 @@ import PagesComponent from './pages';
 
 class CharactercontainerComponent extends React.Component {
     render() {
-        
+
+        //return message if user input does not match any character name
         if (this.props.noData === true) {
             return <div className="message">Nothing found</div>
         }
@@ -39,9 +40,9 @@ class CharacterComponent extends React.Component {
 
         this.showModal = this.showModal.bind(this);
     }
-    
+
+    //open modal to show details of character
     showModal(event) {
-        console.log('click modal');
         this.setState({
             show: !this.state.show
         })

@@ -4,7 +4,6 @@ import './list.css'
 
 class ListComponent extends React.Component {
     render() {
-        console.log(this.props.saveCharacters);
         return (
             <div className='listcontainer'>
                 <NavbarComponent />
