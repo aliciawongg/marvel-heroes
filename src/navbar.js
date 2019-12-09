@@ -1,14 +1,15 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import { Link } from 'react-router-dom';
 
 const NavbarComponent = () => {
     return (
         <Navbar bg="light" variant="light">
             <Navbar.Brand href="#home">Marvel Heroes App</Navbar.Brand>
             <Nav className="mr-auto">
-                <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="/mylist">My List</Nav.Link>
+                <Link to="/">Home </Link>
+                <Link to="/mylist">My List</Link>
             </Nav>
         </Navbar>
     );

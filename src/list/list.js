@@ -4,23 +4,28 @@ import './list.css'
 
 class ListComponent extends React.Component {
     render() {
+        console.log(this.props.saveCharacters);
         return (
-            <div className="listcontainer">
+            <div className='listcontainer'>
                 <NavbarComponent />
                 <h2>My List</h2>
                 <table>
-                    <tr>
-                        <td>Spidey-man Fantastic</td>
-                        <td><i className="fa fa-trash"/></td>
-                    </tr>
-                    <tr>
-                        <td>Spidey-man Incredible Hulk</td>
-                        <td><i className="fa fa-trash"/></td>
-                    </tr>
+                    <tbody>
+                        {this.props.saveCharacters.map((character, index) => 
+                            <CharacterRowComponent key={index} character={character} removeFromList={this.props.removeFromList} />
+                        )}
+                    </tbody>
                 </table>
             </div>
-            
-        )
+        );
     }
 }
+        
+const CharacterRowComponent = (props) => (
+    <tr>
+        <td>{props.character}</td>
+        <td><i className="fa fa-trash" onClick={event => {props.removeFromList(props.character)}} /></td>
+    </tr>
+)
+
 export default ListComponent;

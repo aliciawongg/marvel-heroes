@@ -6,7 +6,7 @@ class CharactercontainerComponent extends React.Component {
     render() {
         
         if (this.props.noData === true) {
-            return <div className="message">Not found</div>
+            return <div className="message">Nothing found</div>
         }
         return (
             <div className='charactercontainer'>

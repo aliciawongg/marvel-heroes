@@ -1,8 +1,6 @@
 .charactercontainer {
     display: flex;
-    /* justify-content: center; */
     flex-wrap: wrap;
-    
 }
 
 .singlecharacter {
@@ -25,7 +23,6 @@
 
 .characterimage {
     border: 1px solid grey;
-    
 }
 
 .charactername {
