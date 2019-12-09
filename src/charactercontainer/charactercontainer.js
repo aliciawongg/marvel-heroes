@@ -1,6 +1,7 @@
 import React from 'react';
 import './charactercontainer.css';
 import CharacterdetailsComponent from './characterdetails';
+import PagesComponent from './pages';
 
 class CharactercontainerComponent extends React.Component {
     render() {
@@ -8,11 +9,22 @@ class CharactercontainerComponent extends React.Component {
         if (this.props.noData === true) {
             return <div className="message">Nothing found</div>
         }
+
+        const indexOfLastChar = this.props.currentPage * this.props.charPerPage;
+        const indexOfFirstChar = indexOfLastChar - this.props.charPerPage;
+        const currentCharacters = this.props.searchCharacters.slice(indexOfFirstChar, indexOfLastChar);
+
         return (
             <div className='charactercontainer'>
-                {this.props.searchCharacters.map(character => 
-                <CharacterComponent key={character.id} character={character} addToList={this.props.addToList} />
+                {currentCharacters.map((character, index) => 
+                    <CharacterComponent key={index} character={character} addToList={this.props.addToList} />
                 )}
+                <PagesComponent 
+                    searchCharacters={this.props.searchCharacters} 
+                    charPerPage={this.props.charPerPage}
+                    currentPage={this.props.currentPage} 
+                    handleNextPage={this.props.handleNextPage}
+                    handlePrevPage={this.props.handlePrevPage} />
             </div>
         );
     }
@@ -26,7 +38,6 @@ class CharacterComponent extends React.Component {
           };
 
         this.showModal = this.showModal.bind(this);
-        //this.addToList = this.addToList.bind(this);
     }
     
     showModal(event) {
@@ -35,8 +46,6 @@ class CharacterComponent extends React.Component {
             show: !this.state.show
         })
     };
-
-
 
     render() {
         return (    

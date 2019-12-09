@@ -35,8 +35,8 @@ const CharurlsComponent = ({ character }) => {
     return (
         <div>Urls:
             <ul>
-                {character.urls.map(url => 
-                    <li key={url.type}><a href={url.url} target="_blank">{url.type}</a></li>)}
+                {character.urls.map((url, index) => 
+                    <li key={url.index}><a href={url.url} target="_blank">{url.type}</a></li>)}
             </ul>
         </div>
     );
@@ -46,8 +46,8 @@ const CharcomicsComponent = ({ character }) => {
     return (
         <div>Comics:
             <ul>
-                {character.comics.items.map(comic => 
-                    <li key={comic.name}>{comic.name}</li>)}
+                {character.comics.items.map((comic, index) => 
+                    <li key={index}>{comic.name}</li>)}
             </ul>
         </div>
     );
@@ -57,8 +57,8 @@ const CharseriesComponent = ({ character }) => {
     return (
         <div>Series:
             <ul>
-                {character.series.items.map(serie => 
-                    <li key={serie.name}>{serie.name}</li>)}
+                {character.series.items.map((serie, index) => 
+                    <li key={index}>{serie.name}</li>)}
             </ul>
         </div>
     );
@@ -68,8 +68,8 @@ const CharstoriesComponent = ({ character }) => {
     return (
         <div>Stories:
             <ul>
-                {character.stories.items.map(story => 
-                    <li key={story.name}>{story.name}</li>)}
+                {character.stories.items.map((story, index) => 
+                    <li key={index}>{story.name}</li>)}
             </ul>
         </div>
     );
