@@ -6,8 +6,8 @@ import NavbarComponent from './navbar';
 import SearchComponent from './search/search';
 import CharactercontainerComponent from './charactercontainer/charactercontainer';
 
-const url = 'https://gateway.marvel.com/v1/public/characters?nameStartsWith=';
-const apikey = '&ts=1565922410&apikey=6a038473ffd6407750a2ea27115f7e7c&hash=1492df65a88ef98a1a279719fe509f72&limit=100';
+const apikey = process.env.REACT_APP_API_KEY;
+const url = process.env.REACT_APP_URL;
 
 class App extends React.Component {
 
@@ -49,7 +49,8 @@ class App extends React.Component {
         if (data.data.results.length === 0) {
           this.setState({
             noData: true})
-        } else {        
+        } 
+        else {      
           this.setState({
             currentPage: 1,
             noData: false,
